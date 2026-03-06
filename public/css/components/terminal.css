@@ -1,0 +1,208 @@
+/* ============================================
+   TERMINAL CONSOLE DENGAN SCANLINE
+   ============================================ */
+
+.terminal-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--space-black);
+    border: 1px solid var(--aura-cyan);
+    box-shadow: 0 0 20px var(--aura-cyan-glow);
+}
+
+.terminal-console {
+    background: var(--space-deep);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ui-silver-300);
+    padding: 20px;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Scanline effect */
+.terminal-console::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, 
+        rgba(0, 255, 255, 0.03) 0%, 
+        transparent 50%,
+        rgba(138, 43, 226, 0.03) 100%);
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+}
+
+/* CRT effect */
+.terminal-console::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, 
+        transparent 0%, 
+        rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+}
+
+/* Terminal header */
+.terminal-header {
+    background: var(--space-mid);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--aura-cyan);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.terminal-title {
+    font-family: var(--font-display);
+    color: var(--aura-cyan);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff5f56; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #27c93f; }
+
+/* Log styling */
+.log-line {
+    margin: 2px 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border-left: 2px solid transparent;
+    padding-left: 8px;
+}
+
+.log-line.info {
+    color: var(--log-info);
+    border-left-color: var(--log-info);
+    background: var(--status-info-bg);
+}
+
+.log-line.warning {
+    color: var(--log-warning);
+    border-left-color: var(--log-warning);
+    background: var(--status-warning-bg);
+}
+
+.log-line.error {
+    color: var(--log-error);
+    border-left-color: var(--log-error);
+    background: var(--status-error-bg);
+    animation: hakai-flicker 1s infinite;
+}
+
+.log-line.success {
+    color: var(--log-success);
+    border-left-color: var(--log-success);
+    background: var(--status-success-bg);
+}
+
+@keyframes hakai-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; background: rgba(148, 0, 211, 0.2); }
+}
+
+/* Timestamp dalam log */
+.log-timestamp {
+    color: var(--ui-silver-600);
+    font-size: 12px;
+    margin-right: 10px;
+    user-select: none;
+}
+
+/* Command input line */
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: var(--aura-cyan);
+}
+
+.terminal-prompt {
+    color: var(--aura-violet);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--ui-silver-300);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+}
+
+.terminal-input:focus {
+    color: white;
+}
+
+/* Cursor blink */
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--aura-cyan);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Progress bar dalam terminal */
+.terminal-progress {
+    width: 100%;
+    height: 20px;
+    background: var(--space-mid);
+    border: 1px solid var(--aura-cyan);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.terminal-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--aura-cyan), var(--aura-violet));
+    transition: width 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: ki-shimmer 2s infinite;
+}
