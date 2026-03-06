@@ -1,0 +1,162 @@
+/* ============================================
+   KI AURA BUTTONS
+   ============================================ */
+
+.btn-ki {
+    position: relative;
+    padding: 12px 28px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ui-silver-100);
+    background: linear-gradient(135deg, var(--space-mid), var(--space-deep));
+    border: 1px solid var(--glass-edge);
+    border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition-base);
+    z-index: 1;
+}
+
+.btn-ki::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        var(--aura-cyan), 
+        var(--aura-violet), 
+        var(--aura-blue));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: -1;
+}
+
+.btn-ki:hover {
+    color: white;
+    border-color: var(--aura-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+}
+
+.btn-ki:hover::before {
+    opacity: 1;
+}
+
+.btn-ki:active {
+    transform: translateY(0);
+}
+
+/* Primary button dengan aura effect */
+.btn-ki-primary {
+    background: linear-gradient(135deg, var(--aura-cyan), var(--aura-blue));
+    border: none;
+    box-shadow: 0 0 15px var(--aura-cyan-glow);
+    animation: pulse-aura 3s infinite;
+}
+
+.btn-ki-primary:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 30px var(--aura-cyan-glow), 0 0 50px var(--aura-violet-glow);
+}
+
+/* Button dengan efek shimmer */
+.btn-ki-shimmer {
+    background: linear-gradient(90deg, 
+        var(--space-mid) 0%, 
+        var(--space-light) 50%, 
+        var(--space-mid) 100%);
+    background-size: 200% 100%;
+    animation: ki-shimmer 3s infinite;
+}
+
+/* Button outline */
+.btn-ki-outline {
+    background: transparent;
+    border: 2px solid var(--aura-cyan);
+    color: var(--aura-cyan);
+}
+
+.btn-ki-outline:hover {
+    background: var(--aura-cyan);
+    color: var(--space-black);
+    box-shadow: 0 0 20px var(--aura-cyan);
+}
+
+/* Button ukuran kecil */
+.btn-ki-sm {
+    padding: 8px 20px;
+    font-size: 12px;
+}
+
+/* Button ukuran besar */
+.btn-ki-lg {
+    padding: 16px 36px;
+    font-size: 16px;
+}
+
+/* Button dengan ikon */
+.btn-ki-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-ki-icon i, .btn-ki-icon svg {
+    width: 18px;
+    height: 18px;
+    transition: var(--transition-base);
+}
+
+.btn-ki-icon:hover i {
+    transform: translateX(5px) scale(1.1);
+}
+
+/* Button disabled */
+.btn-ki:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Button group */
+.btn-group-ki {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.btn-group-ki .btn-ki {
+    border-radius: 0;
+}
+
+.btn-group-ki .btn-ki:first-child {
+    border-radius: 30px 0 0 30px;
+}
+
+.btn-group-ki .btn-ki:last-child {
+    border-radius: 0 30px 30px 0;
+}
+
+/* Button dengan efek vibration khas Goku Ultra Instinct */
+@keyframes vibration {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.btn-ki-ultra {
+    background: linear-gradient(135deg, var(--aura-cyan), white, var(--aura-violet));
+    background-size: 200% 200%;
+    animation: vibration 0.3s infinite, ki-shimmer 2s infinite;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.btn-ki-ultra:hover {
+    animation: vibration 0.1s infinite, ki-shimmer 1s infinite;
+    transform: scale(1.05);
+}
