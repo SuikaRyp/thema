@@ -23,4 +23,4 @@
 
 ```bash
 # One-line installation
-bash <(curl -s https://raw.githubusercontent.com/YOUR_USERNAME/pterodactyl-theme-zaura/main/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/SuikaRyp/theme/main/install.sh)
