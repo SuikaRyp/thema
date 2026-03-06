@@ -1,0 +1,198 @@
+/* ============================================
+   PROJECT Z-AURA - CORE THEME
+   Dragon Ball Super: Ultra Instinct
+   ============================================ */
+
+:root {
+    /* Deep Space Color Palette */
+    --space-black: #050608;
+    --space-deep: #0a0b10;
+    --space-mid: #12141c;
+    --space-light: #1a1c28;
+    
+    /* Ultra Instinct Silver */
+    --ui-silver-50: #f8f9ff;
+    --ui-silver-100: #f0f0f0;
+    --ui-silver-200: #e0e4f0;
+    --ui-silver-300: #c0c8d8;
+    --ui-silver-400: #a0a8c0;
+    --ui-silver-500: #8088a8;
+    --ui-silver-600: #606890;
+    --ui-silver-700: #404870;
+    --ui-silver-800: #202850;
+    --ui-silver-900: #101830;
+    
+    /* Aura Colors */
+    --aura-cyan: #00ffff;
+    --aura-cyan-glow: rgba(0, 255, 255, 0.3);
+    --aura-violet: #8a2be2;
+    --aura-violet-glow: rgba(138, 43, 226, 0.3);
+    --aura-blue: #4169e1;
+    --aura-blue-glow: rgba(65, 105, 225, 0.3);
+    --aura-pink: #ff69b4;
+    --aura-pink-glow: rgba(255, 105, 180, 0.3);
+    
+    /* Dragon Ball Stars */
+    --ball-star-1: #f5a97f;
+    --ball-star-2: #f5b87f;
+    --ball-star-3: #f5c87f;
+    --ball-star-4: #f5d87f;
+    --ball-star-5: #f5e87f;
+    --ball-star-6: #d4f57f;
+    --ball-star-7: #b0f57f;
+    --ball-offline: #2a2a3a;
+    --ball-shadow: rgba(255, 215, 0, 0.6);
+    
+    /* Glass Effects */
+    --glass-bg: rgba(10, 12, 18, 0.7);
+    --glass-bg-dark: rgba(5, 6, 10, 0.85);
+    --glass-edge: rgba(255, 255, 255, 0.08);
+    --glass-edge-hover: rgba(0, 255, 255, 0.15);
+    --glass-glow: rgba(0, 255, 255, 0.1);
+    
+    /* Status Colors */
+    --status-info: #00ffff;
+    --status-info-bg: rgba(0, 255, 255, 0.1);
+    --status-warning: #ff8c00;
+    --status-warning-bg: rgba(255, 140, 0, 0.1);
+    --status-error: #9400d3;
+    --status-error-bg: rgba(148, 0, 211, 0.1);
+    --status-success: #32cd32;
+    --status-success-bg: rgba(50, 205, 50, 0.1);
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Orbitron', 'Exo 2', 'Audiowide', monospace;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+    
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--space-black);
+    background-image: 
+        radial-gradient(circle at 20% 30%, var(--space-deep) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, var(--space-mid) 0%, transparent 40%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 8px);
+    color: var(--ui-silver-200);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Cosmic Dust Animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background: transparent url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="30" cy="40" r="1.5" fill="rgba(0,255,255,0.2)"/><circle cx="60" cy="20" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="70" r="2" fill="rgba(138,43,226,0.2)"/><circle cx="45" cy="85" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="15" cy="95" r="1" fill="rgba(0,255,255,0.2)"/></svg>') repeat;
+    animation: cosmic-drift 120s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+@keyframes cosmic-drift {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--space-deep);
+    border: 1px solid var(--glass-edge);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--aura-cyan), var(--aura-violet));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--aura-violet), var(--aura-cyan));
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--ui-silver-100);
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px var(--aura-cyan-glow);
+}
+
+/* Selection */
+::selection {
+    background: var(--aura-violet);
+    color: var(--ui-silver-100);
+    text-shadow: none;
+}
+
+/* ============================================
+   KEYFRAMES ANIMATIONS
+   ============================================ */
+
+@keyframes pulse-aura {
+    0%, 100% {
+        box-shadow: 0 0 20px var(--aura-cyan-glow), 0 0 40px var(--aura-violet-glow);
+    }
+    50% {
+        box-shadow: 0 0 30px var(--aura-cyan-glow), 0 0 60px var(--aura-violet-glow), 0 0 80px var(--aura-blue-glow);
+    }
+}
+
+@keyframes ki-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spark {
+    0% { clip-path: inset(0 0 0 0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { clip-path: inset(0 0 0 100%); opacity: 0; }
+}
